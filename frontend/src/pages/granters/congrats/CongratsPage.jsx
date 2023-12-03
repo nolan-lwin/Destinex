@@ -17,7 +17,7 @@ function CongratsPage(){
                     <span className={"congratsMessage"}>and ready to grant!</span>
                 </div>
                 <div className={"grantBtnBox"}>
-                    <Link to={"/grant"} className={"congratsToGrant"}>Start Your First Grant</Link>
+                    <Link to={"/granter/home"} className={"congratsToGrant"}>Start Your First Grant</Link>
                 </div>
             </div>
             <Footer />

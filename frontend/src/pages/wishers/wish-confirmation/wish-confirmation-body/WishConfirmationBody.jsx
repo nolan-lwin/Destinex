@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Link, useSearchParams} from "react-router-dom";
+import {Link, useNavigate, useSearchParams} from "react-router-dom";
 import './WishConfirmationBody.css';
 import Delivery_pic from "../../../../assets/img/delivery-proof.jpg"
 import axios from "axios";
@@ -9,9 +9,11 @@ function WishConfirmationBody () {
     const [searchParams] = useSearchParams();
     const jobId = searchParams.get('jobId');
     const [wishInfo, setWishInfo] = useState(null);
+    const navigate = useNavigate();
 
     const handleSubmitConfirmation = async (event) => {
         event.preventDefault();
+        navigate("/")
     }
 
     useEffect(() => {

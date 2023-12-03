@@ -11,12 +11,14 @@ import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import '../header.css';
 import {useAuth} from "../../../networks/hooks/UseAuth";
 import { getFullName } from "../../../networks/utils/AuthUtils";
+import * as authUtils from "../../../networks/utils/AuthUtils";
 
 function Header(props) {
     const [userFullName, setUserFullName] = useState(getFullName);
     const { logout } = useAuth();
     const [showDropdown, setShowDropdown] = useState(false);
     const { isGrant } = props;
+    const userRole = authUtils.getRole();
 
     const toggleDropdown = () => {
         setShowDropdown(!showDropdown);
@@ -38,13 +40,23 @@ function Header(props) {
                 {!isGrant &&
                     <div className="role-option-wish-no-bg">
                         <Link to={"/wish-product"}><button className="btn-wish">Wish</button></Link>
-                        <Link to={"/granter/signup"}><button className="btn-grant">Grant</button></Link>
+                        {userRole === "ROLE_PROVIDER" &&
+                            <Link to={"/granter/home"}><button className="btn-grant">Grant</button></Link>
+                        }
+                        {userRole === "ROLE_USER" &&
+                            <Link to={"/granter/signup"}><button className="btn-grant">Grant</button></Link>
+                        }
                     </div>
                 }
                 {isGrant &&
                     <div className="role-option-grant-no-bg">
                         <Link to={"/wish-product"}><button className="btn-wish">Wish</button></Link>
-                        <Link to={"/granter/signup"}><button className="btn-grant">Grant</button></Link>
+                        {userRole === "ROLE_PROVIDER" &&
+                            <Link to={"/granter/home"}><button className="btn-grant">Grant</button></Link>
+                        }
+                        {userRole === "ROLE_USER" &&
+                            <Link to={"/granter/signup"}><button className="btn-grant">Grant</button></Link>
+                        }
                     </div>
                 }
                 <div className="location">

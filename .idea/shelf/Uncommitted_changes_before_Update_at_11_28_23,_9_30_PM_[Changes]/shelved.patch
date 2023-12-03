@@ -1,0 +1,56 @@
+Index: frontend/src/App.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {\n  Route,\n  BrowserRouter,\n  Routes, Outlet\n} from \"react-router-dom\";\n\nimport './App.css';\n\nimport {AuthProvider} from \"./context/AuthContext\";\n\n// Import files for wishers\nimport SignupWisher from './pages/wishers/signup/Signup';\nimport SigninWisher from './pages/wishers/signin/Signin';\nimport Home from \"./pages/wishers/home/Home\";\nimport WishProduct from './pages/wishers/wish-product/WishProduct';\nimport WishRecipient from \"./pages/wishers/wish-recipient/WishRecipient\";\nimport WishAdditional from \"./pages/wishers/wish-additional/WishAdditional\";\nimport WishSummary from \"./pages/wishers/wish-summary/WishSummary\";\nimport WishSuccess from \"./pages/wishers/wish-success/WishSuccess\";\n\n// Import files for granters\nimport SignupGranter from './pages/granters/signup/Signup';\nimport SetupPage from './pages/granters/setup/Setup';\nimport GranterHome from './pages/granters/granter-home/GranterHome';\nimport BankAcc from './pages/granters/bank/Bank';\nimport JobList from \"./pages/granters/jobs/JobList\";\nimport WishGranted from \"./pages/granters/wish-granted/WishGranted\";\nimport CongratsPage from \"./pages/granters/congrats/CongratsPage\";\nimport Details from \"./pages/granters/details/Details\";\n\n// Import error page\nimport ErrorPage from \"./pages/common/error/ErrorPage\";\nimport WaitingPayment from \"./pages/granters/waiting-payment/WaitingPayment\";\nimport WishConfirmation from \"./pages/wishers/wish-confirmation/WishConfirmation\";\n\n// Route authentication\nimport ProtectedRoute from \"./context/ProtectedRoute\";\nimport {useEffect} from \"react\";\nimport {useAuth} from \"./networks/hooks/UseAuth\";\nimport WishTracking from \"./pages/wishers/wish-tracking/WishTracking\";\n\nfunction App() {\n  return (\n      <BrowserRouter>\n        <AuthProvider>\n          <Routes>\n            <Route path=\"/\" element={<Home/>}/>\n            <Route path=\"/signup\" element={<SignupWisher/>}/>\n            <Route path=\"/signin\" element={<SigninWisher/>}/>\n            <Route path=\"/granter/signup\" element={<SignupGranter/>}/>\n            <Route path=\"/granter/setup\" element={<SetupPage/>}/>\n            <Route path=\"/granter/bank\" element={<BankAcc/>}/>\n            <Route path=\"/granter/congrats\" element={<CongratsPage/>}/>\n            <Route path=\"/error\" element={<ErrorPage/>}/>\n            <Route element={<ProtectedRouteWrapper />}>\n              <Route path=\"/wish-product\" element={<WishProduct/>}/>\n              <Route path=\"/wish-recipient\" element={<WishRecipient/>}/>\n              <Route path=\"/wish-additional\" element={<WishAdditional/>}/>\n              <Route path=\"/wish-summary\" element={<WishSummary/>}/>\n              <Route path=\"/wish-confirmation\" element={<WishConfirmation/>}/>\n              <Route path=\"/wish-success\" element={<WishSuccess/>}/>\n              <Route path=\"/job-tracking\" element={<WishTracking/>}/>\n              <Route path=\"/granter/home\" element={<GranterHome/>}/>\n              <Route path=\"/granter/jobs\" element={<JobList/>} />\n              <Route path=\"/granter/details\" element={<Details/>}/>\n              <Route path=\"/granter/wish-granted\" element={<WishGranted/>}/>\n              <Route path=\"/granter/waiting-payment\" element={<WaitingPayment/>}/>\n            </Route>\n          </Routes>\n        </AuthProvider>\n      </BrowserRouter>\n  );\n}\n\nexport default App;\n\nfunction ProtectedRouteWrapper() {\n  const { isLoggedIn } = useAuth();\n\n  return (\n      <ProtectedRoute isAuthenticated={isLoggedIn}>\n        <Outlet />\n      </ProtectedRoute>\n  );\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/frontend/src/App.js b/frontend/src/App.js
+--- a/frontend/src/App.js	
++++ b/frontend/src/App.js	
+@@ -47,12 +47,12 @@
+             <Route path="/" element={<Home/>}/>
+             <Route path="/signup" element={<SignupWisher/>}/>
+             <Route path="/signin" element={<SigninWisher/>}/>
+-            <Route path="/granter/signup" element={<SignupGranter/>}/>
+-            <Route path="/granter/setup" element={<SetupPage/>}/>
+-            <Route path="/granter/bank" element={<BankAcc/>}/>
+-            <Route path="/granter/congrats" element={<CongratsPage/>}/>
+-            <Route path="/error" element={<ErrorPage/>}/>
+-            <Route element={<ProtectedRouteWrapper />}>
++            <Route path="/error" element={<ErrorPage/>}/>
++            <Route element={<ProtectedRouteWrapper />}>
++              <Route path="/granter/signup" element={<SignupGranter/>}/>
++              <Route path="/granter/setup" element={<SetupPage/>}/>
++              <Route path="/granter/bank" element={<BankAcc/>}/>
++              <Route path="/granter/congrats" element={<CongratsPage/>}/>
+               <Route path="/wish-product" element={<WishProduct/>}/>
+               <Route path="/wish-recipient" element={<WishRecipient/>}/>
+               <Route path="/wish-additional" element={<WishAdditional/>}/>
+@@ -66,6 +66,7 @@
+               <Route path="/granter/wish-granted" element={<WishGranted/>}/>
+               <Route path="/granter/waiting-payment" element={<WaitingPayment/>}/>
+             </Route>
++            <Route path="*" element={<ErrorPage isLoggedIn={true}/>}/>
+           </Routes>
+         </AuthProvider>
+       </BrowserRouter>
+Index: frontend/src/pages/common/error/ErrorPage.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {Link} from \"react-router-dom\";\nimport Header from \"../../../components/header/header-logo-only/Header\";\nimport Footer from \"../../../components/footer/Footer\";\nimport errorPic from \"../../../assets/img/404_error.png\";\nimport \"./error_page.css\"\n\nfunction ErrorPage(props) {\n    const { isLoggedIn } = props;\n\n    return (\n        <div className={\"errorBody\"}>\n            <Header />\n            <div className={\"errorMessage\"}>\n                <div className={\"errorPicBody\"}>\n                    <img className={\"errorPic\"} src={errorPic} alt={\"404_error.png\"} />\n                </div>\n                {isLoggedIn &&\n                    <div className={\"errorLink\"}>\n                        <Link to={\"/granter-home\"} className={\"errorToHome\"}>Wish Your Way Home</Link>\n                    </div>\n                }\n                {!isLoggedIn &&\n                    <div className={\"errorLink\"}>\n                        <Link to={\"/signin\"} className={\"errorToHome\"}>Please sign in first!</Link>\n                    </div>\n                }\n            </div>\n            <Footer />\n        </div>\n\n    );\n}\n\nexport default ErrorPage;
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/frontend/src/pages/common/error/ErrorPage.jsx b/frontend/src/pages/common/error/ErrorPage.jsx
+--- a/frontend/src/pages/common/error/ErrorPage.jsx	
++++ b/frontend/src/pages/common/error/ErrorPage.jsx	
+@@ -16,7 +16,7 @@
+                 </div>
+                 {isLoggedIn &&
+                     <div className={"errorLink"}>
+-                        <Link to={"/granter-home"} className={"errorToHome"}>Wish Your Way Home</Link>
++                        <Link to={"/"} className={"errorToHome"}>Wish Your Way Home</Link>
+                     </div>
+                 }
+                 {!isLoggedIn &&

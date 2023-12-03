@@ -1,11 +1,12 @@
 /* payment.css */
 
-.submitButton {
+.submitButtonForPayment {
     display: flex;
     flex-direction: row;
     max-width: 32rem;
     gap: 5rem;
     padding-top: 1.25rem;
+    padding-bottom: 6rem;
 }
 
 .submitBtn {

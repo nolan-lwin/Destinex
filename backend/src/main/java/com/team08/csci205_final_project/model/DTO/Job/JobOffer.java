@@ -16,14 +16,14 @@
  *
  * ****************************************
  */
-package com.team08.csci205_final_project.model.DTO;
+package com.team08.csci205_final_project.model.DTO.Job;
 
 public class JobOffer {
     private String jobId;
     private String description;
-    private Double itemPrice;
+    private String itemPrice;
 
-    public JobOffer(String jobId, String description, Double itemPrice) {
+    public JobOffer(String jobId, String description, String itemPrice) {
         this.jobId = jobId;
         this.description = description;
         this.itemPrice = itemPrice;
@@ -45,11 +45,11 @@ public class JobOffer {
         this.description = description;
     }
 
-    public Double getItemPrice() {
+    public String getItemPrice() {
         return itemPrice;
     }
 
-    public void setItemPrice(Double itemPrice) {
+    public void setItemPrice(String itemPrice) {
         this.itemPrice = itemPrice;
     }
 }

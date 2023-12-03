@@ -18,7 +18,7 @@
  */
 package com.team08.csci205_final_project.service;
 
-import com.team08.csci205_final_project.model.DTO.JobOffer;
+import com.team08.csci205_final_project.model.DTO.Job.JobOffer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
@@ -31,7 +31,7 @@ public class TestService {
 
     public void sendTestJobOffer(String email) {
         // Create a hard-coded job offer
-        JobOffer jobOffer = new JobOffer("testJobId", "Test Job Description", 100.0);
+        JobOffer jobOffer = new JobOffer("testJobId", "Test Job Description", "100.0");
 
         // Send this offer to the specific user
         messagingTemplate.convertAndSendToUser(email, "/queue/job-offers", jobOffer);

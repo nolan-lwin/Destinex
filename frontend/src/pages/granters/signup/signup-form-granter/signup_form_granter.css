@@ -25,7 +25,7 @@
     max-width: 32rem;
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 1rem;
     padding-bottom: 2rem;
 }
 
@@ -139,5 +139,6 @@ input[type='tel'] {
 .signupButtonText:hover {
     background-color: #7000CD;
 }
+
 
 /* Add media queries for responsive design if needed */

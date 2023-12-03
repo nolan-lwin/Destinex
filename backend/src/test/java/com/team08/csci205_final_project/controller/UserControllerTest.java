@@ -1,107 +1,138 @@
 package com.team08.csci205_final_project.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.json.JSONObject;
 import com.team08.csci205_final_project.model.User.User;
 import com.team08.csci205_final_project.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
-import java.util.Arrays;
 import java.util.Optional;
 
-import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@ExtendWith(MockitoExtension.class)
-class UserControllerTest {
+@WebMvcTest(UserController.class)
+public class UserControllerTest {
 
-    @Mock
-    private UserService userService;
+    @Autowired
+    private MockMvc mockMvc;
 
     @InjectMocks
     private UserController userController;
 
-    private MockMvc mockMvc;
-    private ObjectMapper objectMapper;
+    @MockBean
+    private UserService userService;
+    private User mockUser;
 
     @BeforeEach
-    void setUp() {
-        mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
-        objectMapper = new ObjectMapper();
+    public void setUp(WebApplicationContext wac) {
+        mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
+
+        mockUser = new User();
+        mockUser.setFirstName("Hung");
+        mockUser.setLastName("Pham");
+        mockUser.setEmail("test@t.com");
+        mockUser.setPassword("fuc");
+        mockUser.setId("user123");
+
     }
 
+    /**
+     * Test if the user register receive the correct schema
+     * to return OK or not
+     * @throws Exception
+     */
     @Test
-    void createUser() throws Exception {
-        User user = new User(); // Assuming User class has relevant fields
-        given(userService.userRegister(user)).willReturn(user);
+    public void createUserTest() throws Exception {
+
+        Mockito.when(userService.findUserByEmail(any())).thenReturn(Optional.empty());
+
+        JSONObject userJson = new JSONObject()
+                .put("firstName", "Hung")
+                .put("lastName", "Pham")
+                .put("email", "test@t.com")
+                .put("password", "fuc");
+
+        when(userService.userRegister(any())).thenReturn(mockUser);
 
         mockMvc.perform(post("/api/users/register")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(user)))
+                        .content(userJson.toString()))
                 .andExpect(status().isOk())
-                .andExpect(content().json(objectMapper.writeValueAsString(user)));
+                .andExpect(jsonPath("$.email").value("test@t.com"));
     }
 
+    /**
+     * Test this endpoint return correct status and content or not
+     * @throws Exception
+     */
     @Test
-    void getAllUsers() throws Exception {
-        User user1 = new User(); // Create test users
-        User user2 = new User();
-        given(userService.findAllUsers()).willReturn(Arrays.asList(user1, user2));
+    public void getCurrentUserInfoTest() throws Exception {
+        Mockito.when(userService.getCurrentUserId()).thenReturn(mockUser.getId());
+        Mockito.when(userService.findUserById(mockUser.getId())).thenReturn(Optional.of(mockUser));
 
-        mockMvc.perform(get("/api/users"))
+        mockMvc.perform(get("/api/users/me"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.size()").value(2));
+                .andExpect(jsonPath("$.id").value(mockUser.getId()));
     }
 
+    /**
+     * Test this endpoint return correct status and content or not
+     * @throws Exception
+     */
     @Test
-    void getUserById() throws Exception {
-        String userId = "123";
-        User user = new User();
-        given(userService.findUserById(userId)).willReturn(Optional.of(user));
+    public void getUserPublicInfoTest() throws Exception {
+        Mockito.when(userService.findUserById(mockUser.getId())).thenReturn(Optional.of(mockUser));
 
-        mockMvc.perform(get("/api/users/" + userId))
+        mockMvc.perform(get("/api/users/" + mockUser.getId()))
                 .andExpect(status().isOk())
-                .andExpect(content().json(objectMapper.writeValueAsString(user)));
+                .andExpect(jsonPath("$.id").value(mockUser.getId()));
     }
 
+    /**
+     * Test this endpoint return correct status and content or not
+     * @throws Exception
+     */
     @Test
-    void getUserByEmail() throws Exception {
-        String email = "user@example.com";
-        User user = new User();
-        given(userService.findUserByEmail(email)).willReturn(Optional.of(user));
+    public void updateUserTest() throws Exception {
+        JSONObject userJson = new JSONObject()
+                .put("firstName","lol")
+                .put("lastName", "lol123")
+                .put("email", "updated@example.com")
+                .put("password", "newpassword123"); // Add other fields as needed
 
-        mockMvc.perform(get("/api/users/email/" + email))
-                .andExpect(status().isOk())
-                .andExpect(content().json(objectMapper.writeValueAsString(user)));
-    }
+        mockUser.setEmail("updated@example.com");
 
-    @Test
-    void updateUser() throws Exception {
-        String userId = "123";
-        User user = new User();
-        user.setId(userId);
-        given(userService.updateUser(user)).willReturn(user);
+        Mockito.when(userService.updateUser(any())).thenReturn(mockUser);
 
-        mockMvc.perform(put("/api/users/" + userId)
+        mockMvc.perform(put("/api/users/me")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(user)))
+                        .content(userJson.toString()))
                 .andExpect(status().isOk())
-                .andExpect(content().json(objectMapper.writeValueAsString(user)));
+                .andExpect(jsonPath("$.email").value("updated@example.com"));
     }
 
+    /**
+     * Test this endpoint return correct status and content or not
+     * @throws Exception
+     */
     @Test
-    void deleteUser() throws Exception {
-        String userId = "123";
+    public void deleteUserTest() throws Exception {
+        doNothing().when(userService).deleteUser();
 
-        mockMvc.perform(delete("/api/users/" + userId))
+        mockMvc.perform(delete("/api/users/me"))
                 .andExpect(status().isNoContent());
     }
+
+
 }

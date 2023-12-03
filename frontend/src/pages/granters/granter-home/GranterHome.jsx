@@ -6,7 +6,7 @@ import './granter_home.css'
 function GranterHome() {
     return (
         <div className="granterHome">
-            <Header></Header>
+            <Header isGrant={true}></Header>
             <GranterUpdates></GranterUpdates>
             {/*<Footer></Footer>*/}
         </div>

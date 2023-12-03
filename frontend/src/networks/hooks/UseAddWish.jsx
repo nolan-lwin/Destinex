@@ -1,8 +1,11 @@
 import * as addWishService from "../api/AddWishService"
 
-export const addJob = async(category, receiverName, receiverPhone, receiverEmail, receiverAddress, description, receiverAddressPoint) => {
+export const addJob = async(productName, endDate, itemPrice, category, receiverName, receiverPhone, receiverEmail, receiverAddress, description, receiverAddressPoint) => {
     try {
         const jobData = {
+            "productName": productName,
+            "endDate": endDate,
+            "itemPrice": itemPrice,
             "category": category,
             "receiverName": receiverName,
             "receiverPhone": receiverPhone,

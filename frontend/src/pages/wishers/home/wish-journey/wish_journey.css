@@ -1,0 +1,83 @@
+/* wish_journey.css */
+
+.wishJourney {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+}
+
+.wishJourneyTitle {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 2.5rem;
+}
+
+.wishJourneyTitleText {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #000000;
+}
+
+.wishJourneyContent {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+}
+
+.wisherStory, .granterStory, .recipientStory {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wisherStory {
+    margin-left: 5rem;
+    margin-right: 2.5rem;
+}
+
+.granterStory {
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+}
+
+.recipientStory {
+    margin-left: 2.5rem;
+    margin-right: 5rem;
+}
+
+.wisherStoryImg, .granterStoryImg, .recipientStoryImg {
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+.wisherStoryContent, .granterStoryContent, .recipientStoryContent {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+    background-color: #E9E9E9;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+.wisherStoryTitle, .granterStoryTitle, .recipientStoryTitle {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #000000;
+    padding-top: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.wisherStoryText, .granterStoryText, .recipientStoryText {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #545454;
+    padding: 1rem 2rem 2rem;
+}

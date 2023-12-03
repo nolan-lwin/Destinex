@@ -24,59 +24,50 @@
     color: #000;
 }
 
-.itemsAndShippingCost, .totalBeforeTaxAndEstimatedTaxCollected, .orderTotal {
+.itemsAndShippingCost,
+.totalBeforeTaxAndEstimatedTaxCollected,
+.orderTotal {
     display: flex;
     width: 100%;
     flex-direction: column;
     gap: 0.5rem;
 }
 
-.boldItems, .boldShippingCost, .boldTotalBeforeTax, .boldEstimatedTaxCollected, .boldOrderTotalText {
+.boldItems,
+.boldShippingCost,
+.boldTotalBeforeTax,
+.boldEstimatedTaxCollected,
+.boldOrderTotalText {
     font-size: 1rem;
     font-weight: 600;
     color: #545454;
+    margin-right: auto;
 }
 
-.boldItems {
-    margin-right: 25rem;
+.itemsAndShippingCost,
+.totalBeforeTaxAndEstimatedTaxCollected,
+.orderTotal {
+    justify-content: space-between;
 }
 
-.boldShippingCost {
-    margin-right: 20.5rem;
-}
-
-.boldTotalBeforeTax {
-    margin-right: 20rem;
-}
-
-.boldEstimatedTaxCollected {
-    margin-right: 16rem;
-}
-
-.boldOrderTotalText {
-    margin-right: 20.75rem;
-}
-
-.items, .shippingCost, .totalBeforeTax, .estimatedTaxCollected, .orderTotalText {
+.items,
+.shippingCost,
+.totalBeforeTax,
+.estimatedTaxCollected,
+.orderTotalText {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    justify-content: space-between;
     font-size: 1rem;
     font-weight: 400;
     color: #545454;
 }
 
-.lineBreakForItemsAndShippingCost {
-    border: 0.1rem solid #E9E9E9;
-    width: 10rem;
-    margin-right: 16.5rem;
-}
-
-.lineBreakForTotalBeforeTaxAndEstimatedTaxCollected {
-    border: 0.1rem solid #E9E9E9;
-    width: 33.5rem;
-    margin-right: 16.5rem;
-}
-
+.lineBreakForItemsAndShippingCost,
+.lineBreakForTotalBeforeTaxAndEstimatedTaxCollected,
 .lineBreakForOrderSummary {
     border: 0.1rem solid #E9E9E9;
-    width: 60rem;
-    margin-top: 5rem;
+    width: 100%;
+    margin-right: auto;
 }

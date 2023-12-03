@@ -5,8 +5,27 @@ import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 import './setup_form.css';
 
 function SetupPage () {
-    const [country, setCountry] = useState('');
-    const [region, setRegion] = useState('');
+    const [vehicleDetails, setVehicleDetails] = useState('');
+    const [nationalIdNumber, setNationalIdNumber] = useState('');
+    const [driverLicense, setDriverLicense] = useState('');
+
+    const handleVehicleChange = (event) => {
+        const newVehicle = event.target.value
+        setVehicleDetails(newVehicle)
+        sessionStorage.setItem("vehicleDetails", newVehicle)
+    }
+
+    const handleIDChange = (event) => {
+        const newId = event.target.value
+        setNationalIdNumber(newId)
+        sessionStorage.setItem("nationalIdNumber", newId)
+    }
+
+    const handleDriverLicenseChange = (event) => {
+        const newLicense = event.target.value
+        setDriverLicense(newLicense)
+        sessionStorage.setItem("driverLicense", newLicense)
+    }
 
     return (
         <div className='setupForm'>
@@ -37,7 +56,9 @@ function SetupPage () {
 
                 <div className='vehicleModel'>
                     <label className='vehicleModelText'>Vehicle Model</label>
-                    <input type='text' placeholder='Enter your vehicle model'/>
+                    <input type='text' placeholder='Enter your vehicle model'
+                        onChange={handleVehicleChange}
+                    />
                 </div>
 
             </div>
@@ -50,34 +71,16 @@ function SetupPage () {
 
                 <div className='sSN'>
                     <label className='sSNText'>Social Security Number</label>
-                    <input type='text' placeholder='Enter your SSN'/>
-                </div>
-
-                <div className="driversLicenseCountry">
-                    <label className="driversLicenseCountryText">Driver's License Country</label>
-                    <CountryDropdown
-                        value={country}
-                        onChange={(val) => setCountry(val)}
-                        id="country"
-                        classes="dropdownClass" // apply your custom styles here
-                    />
-                </div>
-
-                <div className="driversLicenseState">
-                    <label className="driversLicenseStateText">Driver's License State</label>
-                    <RegionDropdown
-                        country={country}
-                        value={region}
-                        onChange={(val) => setRegion(val)}
-                        id="state"
-                        classes="dropdownClass" // apply your custom styles here
-                        disableWhenEmpty={true}
+                    <input type='text' placeholder='Enter your SSN'
+                        onChange={handleIDChange}
                     />
                 </div>
 
                 <div className='driversLicenseNumber'>
                     <label className='driversLicenseNumberText'>Driver's License Number</label>
-                    <input type='text' placeholder='Enter your driver&apos;s license number'/>
+                    <input type='text' placeholder='Enter your driver&apos;s license number'
+                        onChange={handleDriverLicenseChange}
+                    />
                 </div>
 
                 <div className='dob'>

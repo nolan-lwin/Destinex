@@ -2,7 +2,7 @@ package com.team08.csci205_final_project.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.team08.csci205_final_project.config.SecurityConfig;
-import com.team08.csci205_final_project.model.Transaction;
+import com.team08.csci205_final_project.model.Transaction.Transaction;
 import com.team08.csci205_final_project.service.TransactionService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

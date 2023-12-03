@@ -68,7 +68,7 @@
 
 .contactAndEmailContainer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     max-width: 32rem;
     gap: 3.5rem;
     padding-bottom: 2.5rem;

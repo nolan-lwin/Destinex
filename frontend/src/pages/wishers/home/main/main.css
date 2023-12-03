@@ -1,0 +1,87 @@
+/* main.css */
+
+.main {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #8B00FF;
+}
+
+.mainLeft {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-left: 5rem;
+    margin-bottom: 5rem;
+}
+
+.mainTitle {
+    padding-bottom: 1rem;
+}
+
+.mainTitleText {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+
+.makeAWishBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #FFFFFF;
+    width: 40rem;
+    height: 3.5rem;
+    border: none;
+    border-radius: 5rem;
+    text-decoration: none;
+}
+
+.makeAWishIcon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 3rem;
+    height: 3.5rem;
+    padding-left: 2rem;
+}
+
+.makeAWishText {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 10rem;
+    height: 3.5rem;
+    color: #545454;
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+
+.makeAWishCircle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #8B00FF;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    margin-left: 21.25rem;
+}
+
+.arrow {
+    width: 2rem;
+    height: 2rem;
+
+}
+
+.mainRight {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 3rem;
+    padding-right: 5rem;
+}

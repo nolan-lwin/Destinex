@@ -66,7 +66,10 @@ public class Job {
     private LocalDate createdDate;
 
     /** The date when the job is set to end. */
-    private LocalDate endDate;
+    private String endDate;
+
+    /** The name of the product/service. */
+    private String productName;
 
     /** The category of the job. */
     private String category;
@@ -75,7 +78,7 @@ public class Job {
     private String description;
 
     /** The price of the item or service offered. */
-    private Double itemPrice;
+    private String itemPrice;
 
     /** The total price of the job, including additional costs. */
     private Double totalPrice;

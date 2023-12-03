@@ -1,7 +1,8 @@
 package com.team08.csci205_final_project.repository;
 
-import com.team08.csci205_final_project.model.Job;
-import com.team08.csci205_final_project.model.JobStatus;
+import com.team08.csci205_final_project.model.Job.Job;
+import com.team08.csci205_final_project.model.Job.JobStatus;
+import com.team08.csci205_final_project.model.User.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,7 +24,10 @@ class JobRepositoryTest {
 
     @Autowired
     private JobRepository jobRepository;
-//
+
+    @Autowired
+    private UserRepository userRepository;
+
 //    @BeforeEach
 //    public void setup() {
 //        randomJob = new Job();
@@ -59,5 +64,10 @@ class JobRepositoryTest {
 //        assertFalse(foundJobs.isEmpty());
 //        assertTrue(foundJobs.contains(givenJob));
 //        assertTrue(foundJobs.contains(givenJob1));
+//    }
+
+//    @Test
+//    void findUserByEmail() throws Exception {
+//        Optional<User> user = userRepository.findByEmail("{}")
 //    }
 }

@@ -22,11 +22,13 @@ public class LoginResponse {
     private String jwt;
     private String fullName;
     private String email;
+    private Role role;
 
-    public LoginResponse(String jwt, String fullName, String email) {
+    public LoginResponse(String jwt, String fullName, String email, Role role) {
         this.jwt = jwt;
         this.fullName = fullName;
         this.email = email;
+        this.role = role;
     }
 
     public String getJwt() {
@@ -40,4 +42,6 @@ public class LoginResponse {
     public String getEmail() {
         return email;
     }
+
+    public Role getRole() { return role; }
 }

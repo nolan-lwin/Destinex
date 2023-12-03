@@ -4,16 +4,17 @@
 
 .bottomTitle {
     padding-top: 3rem;
-    padding-bottom: 2.5rem;
     padding-left: 6.5rem;
+    text-decoration: none;
 }
 
 .bottomTitleText {
     color: #8B00FF;
-    font-size: 1.875rem;
+    font-size: 2rem;
     font-style: normal;
-    font-weight: 900;
+    font-weight: bold;
     line-height: normal;
+    text-decoration: none;
 }
 
 .bottomLinksContainer {
@@ -22,13 +23,16 @@
     justify-content: space-between;
 }
 
-.Appstore_Logo {
+.AppstoreLogo {
+    width: 12rem;
+    height: 12rem;
     padding-left: 5.8rem;
 }
 
 .bottomLinks {
     display: flex;
     flex-direction: row;
+    padding-top: 2.25rem;
     padding-right: 2.5rem;
 }
 
@@ -40,7 +44,7 @@
 
 .bottomLinksText {
     color: #545454;
-    font-size: 20px;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -55,27 +59,29 @@
 
 .bottomSocMedFollowText {
     color: #545454;
-    font-size: 20px;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
 }
 
 .bottomSocMedLogo {
+    width: 1.5rem;
+    height: 1.5rem;
     padding-left: 1.5rem;
 }
 
 .bottomCopyright {
     display: flex;
     justify-content: center;
-    padding-top: 4rem;
-    padding-bottom: 3.6rem;
+    padding-top: 3rem;
+    padding-bottom: 3.5rem;
 }
 
 .bottomCopyrightText {
     color: #545454;
     text-align: center;
-    font-size: 20px;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 500;
     line-height: normal;

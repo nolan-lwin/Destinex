@@ -31,6 +31,7 @@ export const AuthProvider = ({ children }) => {
                 authUtils.setToken(response.data.jwt);
                 authUtils.setUsername(username);
                 authUtils.setFullName(response.data.fullName)
+                authUtils.setRole(response.data.role);
                 return true;
             } else {
                 setError('Login failed: Token not found');

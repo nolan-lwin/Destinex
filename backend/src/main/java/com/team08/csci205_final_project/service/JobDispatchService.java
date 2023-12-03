@@ -19,10 +19,9 @@
 
 package com.team08.csci205_final_project.service;
 
-import com.team08.csci205_final_project.config.ApplicationLogicConfig;
 import com.team08.csci205_final_project.event.JobPostedEvent;
-import com.team08.csci205_final_project.model.DTO.JobOffer;
-import com.team08.csci205_final_project.model.DTO.JobTrackingStatus;
+import com.team08.csci205_final_project.model.DTO.Job.JobOffer;
+import com.team08.csci205_final_project.model.DTO.Job.JobTrackingStatus;
 import com.team08.csci205_final_project.model.Job.Job;
 import com.team08.csci205_final_project.model.Job.JobStatus;
 import com.team08.csci205_final_project.model.Provider.Provider;
@@ -212,20 +211,30 @@ public class JobDispatchService implements ApplicationListener<JobPostedEvent> {
      * @param status The status of the job (e.g., accepted, rejected).
      */
     public void handleProviderResponse(String jobId, String providerEmail, JobStatus status) {
+        Job job = null;
+        Provider provider = null;
+
         LOGGER.info("Handling provider response for job: {}, provider: {}, status: {}", jobId, providerEmail, status);
+
         Optional<Job> jobOpt = jobService.findJobById(jobId);
-        if (!jobOpt.isPresent()) {
-            // Handle the case where the job doesn't exist
-            return;
+        Optional<Provider> providerOpt = providerService.findProviderByEmail(providerEmail);
+
+        if (jobOpt.isPresent()) {
+            job = jobOpt.get();
         }
 
-        Job job = jobOpt.get();
+        if (providerOpt.isPresent()) {
+            provider = providerOpt.get();
+        }
 
         if (status == JobStatus.ACCEPTED) {
             LOGGER.info("================== Job " + jobId + " is accepted by provider " + providerEmail);
             job.setProviderId(providerEmail);
             job.setStatus(JobStatus.ACCEPTED);
+            provider.setActiveJob(job.getId());
+            provider.setProviderAvail(false);
             jobService.updateJob(job);
+            providerService.updateProvider(provider);
             notifyUser(jobId, job.getUserId(), providerEmail, status);
         } else if (status == JobStatus.REJECTED) {
             LOGGER.info("Job {} is rejected by provider {}. Adding to rejection list.", jobId, providerEmail);

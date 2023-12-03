@@ -26,7 +26,7 @@ function WishSuccess() {
                     <span className="wishSuccessConfirmationMessage">We will send you a delivery confirmation email as soon as your wish is granted.</span>
                 </div>
 
-                <Link to={`/job-tracking?jobId=${jobId}`} className="wishTrackingButton">
+                <Link to={`/wish-confirmation?jobId=${jobId}`} className="wishTrackingButton">
                     Track your Wish
                 </Link>
                 <Link to={"/"} className="wishSuccessButton">

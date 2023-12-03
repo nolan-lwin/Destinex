@@ -1,21 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./footer.css"
 
-import Appstore_Icon from "../../assets/svg/appstore_icon.svg"
-import Facebook_Icon from "../../assets/svg/facebook_icon.svg"
-import Instagram_Icon from "../../assets/svg/instagram_icon.svg"
-import Linkedin_Icon from "../../assets/svg/linkedin_icon.svg"
-import X_Icon from "../../assets/svg/x_icon.svg"
-import Youtube_Icon from "../../assets/svg/youtube_icon.svg"
+import AppstoreIcon from "../../assets/svg/appstore_icon.svg"
+import FacebookIcon from "../../assets/svg/facebook_icon.svg"
+import InstagramIcon from "../../assets/svg/instagram_icon.svg"
+import LinkedinIcon from "../../assets/svg/linkedin_icon.svg"
+import XIcon from "../../assets/svg/x_icon.svg"
+import YoutubeIcon from "../../assets/svg/youtube_icon.svg"
 
 function Footer() {
     return (
         <div className={"bottom"}>
             <div className={"bottomTitle"}>
-                <span className={"bottomTitleText"}>Destinex</span>
+                <Link to={'/'} className={"bottomTitleText"}>Destinex</Link>
             </div>
             <div className={"bottomLinksContainer"}>
-                <img className={"Appstore_Logo"} src={Appstore_Icon} alt={"Appstore Logo"} />
+                <img className={"AppstoreLogo"} src={AppstoreIcon} alt={"Appstore Logo"} />
                 <div className={"bottomLinks"}>
                     <div className={"bottomLinksTextBox"}>
                         <span className={"bottomLinksText"}>About Destinex</span>
@@ -33,11 +34,11 @@ function Footer() {
             </div>
             <div className={"bottomSocMed"}>
                 <span className={"bottomSocMedFollowText"}>Follow Destinex</span>
-                <img className={"bottomSocMedLogo"} src={Facebook_Icon} alt={"Facebook Logo"} />
-                <img className={"bottomSocMedLogo"} src={Instagram_Icon} alt={"Instagram Logo"} />
-                <img className={"bottomSocMedLogo"} src={Linkedin_Icon} alt={"Linkedin Logo"} />
-                <img className={"bottomSocMedLogo"} src={X_Icon} alt={"X Logo"} />
-                <img className={"bottomSocMedLogo"} src={Youtube_Icon} alt={"Youtube Logo"} />
+                <img className={"bottomSocMedLogo"} src={FacebookIcon} alt={"Facebook Logo"} />
+                <img className={"bottomSocMedLogo"} src={InstagramIcon} alt={"Instagram Logo"} />
+                <img className={"bottomSocMedLogo"} src={LinkedinIcon} alt={"Linkedin Logo"} />
+                <img className={"bottomSocMedLogo"} src={XIcon} alt={"X Logo"} />
+                <img className={"bottomSocMedLogo"} src={YoutubeIcon} alt={"Youtube Logo"} />
             </div>
             <div className={"bottomCopyright"}>
                 <span className={"bottomCopyrightText"}>@2023 Destinex. All Rights Reserved.</span>

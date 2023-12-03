@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080/api/jobs';
-const token = localStorage.getItem('jwtToken');
 
 export const addJob = async (jobData) => {
+    const API_URL = 'http://localhost:8080/api/jobs';
+    const token = localStorage.getItem('jwtToken');
+
     try {
         return await axios.post(`${API_URL}`, jobData, {
             headers: {

@@ -10,8 +10,12 @@ function Payment() {
     const handleSubmitWish = async (event) => {
         event.preventDefault();
 
+        const productName = sessionStorage.getItem("productName")
+        const endDate = sessionStorage.getItem("date")
+        const itemPrice = sessionStorage.getItem("itemPrice")
+        // Total price is calculated by adding $15 shipping/handling and multiplying by 1.05
         const category = sessionStorage.getItem("category")
-        const receiverName = sessionStorage.getItem("receiverFirstName") + sessionStorage.getItem("receiverLastName")
+        const receiverName = sessionStorage.getItem("receiverFirstName") + " " + sessionStorage.getItem("receiverLastName")
         const receiverPhone = sessionStorage.getItem("receiverPhone")
         const receiverEmail = sessionStorage.getItem("receiverEmail")
         const receiverAddress = sessionStorage.getItem("receiverAddress")
@@ -21,7 +25,7 @@ function Payment() {
             "coordinates": JSON.parse(sessionStorage.getItem("receiverAddressPoint"))
         }
 
-        const successJobId = await addJob(category, receiverName, receiverPhone, receiverEmail, receiverAddress, description, receiverAddressPoint)
+        const successJobId = await addJob(productName, endDate, itemPrice, category, receiverName, receiverPhone, receiverEmail, receiverAddress, description, receiverAddressPoint)
         if (successJobId) {
             navigate(`/wish-success?jobId=${encodeURIComponent(successJobId)}`);
         }
@@ -36,7 +40,7 @@ function Payment() {
 
                 <div className="paymentContainer">
 
-                    <div className="submitButton">
+                    <div className="submitButtonForPayment">
                         <button type={'submit'} className='submitBtn'>
                             Submit
                         </button>

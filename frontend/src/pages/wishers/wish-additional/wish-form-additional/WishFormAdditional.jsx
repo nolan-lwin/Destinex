@@ -7,8 +7,9 @@ function WishFormAdditional() {
     const [description, setDescription] = useState('');
 
     const handleDescriptionChange = (event) => {
-        setDescription(event.target.value)
-        sessionStorage.setItem("description", description)
+        const newDesc = event.target.value
+        setDescription(newDesc)
+        sessionStorage.setItem("description", newDesc)
     }
 
     return (

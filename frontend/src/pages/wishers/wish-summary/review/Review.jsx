@@ -5,6 +5,16 @@ import redRose from '../../../../assets/img/red-rose.png';
 
 function Review() {
 
+    const productName = sessionStorage.getItem("productName")
+    const itemPriceLow = sessionStorage.getItem("itemPrice").split(",")[0]
+    const itemPriceHigh = sessionStorage.getItem("itemPrice").split(",")[1]
+    const date = sessionStorage.getItem("date")
+    const name = sessionStorage.getItem("receiverFirstName") + " " + sessionStorage.getItem("receiverLastName")
+    const phone = sessionStorage.getItem("receiverPhone")
+    const email = sessionStorage.getItem("receiverEmail")
+    const address = sessionStorage.getItem("receiverAddressString")
+
+
     return (
         <div className='review'>
             <div className="wishFormForSummary">
@@ -29,14 +39,28 @@ function Review() {
                     </div>
 
                     <div className='reviewItemsAndInfo'>
-                        <span className='name'><span className='boldName'>Name: </span>Red Rose Bouquet</span>
+                        <span className='name'><span className='boldName'>Name: </span>
+                            {productName}
+                        </span>
                         <span className='quantity'><span className='boldQuantity'>Quantity: </span>1</span>
-                        <span className='priceRange'><span className='boldPriceRange'>Price Range: </span>$30 - $70</span>
-                        <span className='arrivalDate'><span className='boldArrivalDate'>Arrival Date: </span>Wed, Nov 8</span>
-                        <span className='recipientName'><span className='boldRecipientName'>Recipient's Name: </span>Nolan Lwin</span>
-                        <span className='recipientPhone'><span className='boldRecipientPhone'>Recipient's Phone Number: </span>272-788-0307</span>
-                        <span className='recipientEmail'><span className='boldRecipientEmail'>Recipient's Email Address: </span>nl020@bucknell.edu</span>
-                        <span className='recipientAddress'><span className='boldRecipientAddress'>Recipient's Shipping Address: </span>550 1st Ave, New York, NY 10016, USA</span>
+                        <span className='priceRange'><span className='boldPriceRange'>Price Range: </span>
+                            ${itemPriceLow} - ${itemPriceHigh}
+                        </span>
+                        <span className='arrivalDate'><span className='boldArrivalDate'>Arrival Date: </span>
+                            {date}
+                        </span>
+                        <span className='recipientName'><span className='boldRecipientName'>Recipient's Name: </span>
+                            {name}
+                        </span>
+                        <span className='recipientPhone'><span className='boldRecipientPhone'>Recipient's Phone Number: </span>
+                            {phone}
+                        </span>
+                        <span className='recipientEmail'><span className='boldRecipientEmail'>Recipient's Email Address: </span>
+                            {email}
+                        </span>
+                        <span className='recipientAddress'><span className='boldRecipientAddress'>Recipient's Shipping Address: </span>
+                            {address}
+                        </span>
                     </div>
                 </div>
 

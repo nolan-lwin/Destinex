@@ -20,31 +20,51 @@ function WishFormRecipient() {
     const [zip, setZip] = useState('');
     const [address, setAddress] = useState('');
     const [addressPoint, setAddressPoint] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const navigate = useNavigate();
 
+    const validateForm = () => {
+        if (!receiverFirstName || !receiverLastName || !phone || !email || !firstAddress || !country || !region || !city || !zip) {
+            setErrorMessage('Please fill in all required information!');
+            return false;
+        }
+        return true;
+    };
+
+    const handleNextClick = () => {
+        const isValid = validateForm();
+        if (isValid) {
+            navigate('/wish-additional');
+        }
+    };
+
     const handleFirstNameChange = (event) => {
         // Might not need this until last page if using sessionStorage
-        setReceiverFirstName(event.target.value)
-        sessionStorage.setItem("receiverFirstName", receiverFirstName)
+        const newFirstName = event.target.value
+        setReceiverFirstName(newFirstName)
+        sessionStorage.setItem("receiverFirstName", newFirstName)
     }
 
     const handleLastNameChange = (event) => {
         // Might not need this until last page if using sessionStorage
-        setReceiverLastName(event.target.value)
-        sessionStorage.setItem("receiverLastName", receiverLastName)
+        const newLastName = event.target.value
+        setReceiverLastName(newLastName)
+        sessionStorage.setItem("receiverLastName", newLastName)
     }
 
-    const handleContactChange = (event) => {
+    const handleContactChange = (phoneNumber) => {
         // Might not need this until last page if using sessionStorage
-        setPhone(event.target.value)
-        sessionStorage.setItem("receiverPhone", phone)
+        const newPhone = phoneNumber
+        setPhone(newPhone)
+        sessionStorage.setItem("receiverPhone", newPhone)
     }
 
     const handleEmailChange = (event) => {
         // Might not need this until last page if using sessionStorage
-        setEmail(event.target.value)
-        sessionStorage.setItem("receiverEmail", email)
+        const newEmail = event.target.value
+        setEmail(newEmail)
+        sessionStorage.setItem("receiverEmail", newEmail)
     }
 
     const getCoordinates = async (address) => {
@@ -66,27 +86,17 @@ function WishFormRecipient() {
         }
     };
 
-    const handleAddressChange = async (event) => {
-        // Might not need this until last page if using sessionStorage
-
-        event.preventDefault();
-
-        // Gets coordinates based on first address
-        const coords = await getCoordinates(firstAddress + ", " + city);
-
+    const processAddress = async () => {
+        const coords = await getCoordinates(`${firstAddress}, ${city}`);
         if (coords) {
             const geoJsonPoint = {
                 type: "Point",
-                coordinates: [coords.lon, coords.lat], // Note: Longitude and Latitude order
+                coordinates: [coords.lon, coords.lat],
             };
-
             setAddressPoint(geoJsonPoint);
-
             sessionStorage.setItem("receiverAddressPoint", JSON.stringify(geoJsonPoint.coordinates));
-            console.log('sessionstorage', sessionStorage.getItem("receiverAddressPoint"))
         }
-
-        const adrs = {
+        const addressObject = {
             FirstAddress: firstAddress,
             SecondAddress: secondAddress,
             City: city,
@@ -94,22 +104,24 @@ function WishFormRecipient() {
             Country: country,
             Zip: zip,
         };
+        sessionStorage.setItem("receiverAddress", JSON.stringify(addressObject));
+        sessionStorage.setItem("receiverAddressString", `${firstAddress}, ${secondAddress}, ${city}, ${region}, ${country}`);
+    };
 
-
-        console.log("adrs object: ", adrs);
-
-        const adrsJSON = JSON.stringify(adrs);
-
-        sessionStorage.setItem("receiverAddress", adrsJSON);
-
-        navigate("/wish-additional")
-    }
+    const handleSubmit = async () => {
+        const isValid = validateForm();
+        if (isValid) {
+            await processAddress();
+            navigate('/wish-additional');
+        }
+    };
 
     return (
         <div className="wishFormForRecipient">
             <div className="wishFormForRecipientTitle">
                 <span className="wishFormForRecipientTitleText">Make a </span>
                 <span className="wishFormForRecipientTitleWish">Wish</span>
+                <p>{errorMessage && <span>{errorMessage}</span>}</p>
             </div>
 
             <div className='wishFormForRecipientContainer'>
@@ -141,11 +153,11 @@ function WishFormRecipient() {
                     <div className='contactNumber'>
                         <label className='contactNumberText'>Recipient's Phone Number</label>
                         <div className="contactNumberInputContainer">
-                            <input
+                            <PhoneInput
                                 value={phone}
                                 onChange={handleContactChange}
-                                // international
-                                // defaultCountry="US"
+                                international
+                                defaultCountry="US"
                             />
                         </div>
                     </div>
@@ -215,9 +227,9 @@ function WishFormRecipient() {
                     <Link to='/wish-product' className='backButton'>
                         Back
                     </Link>
-                    <Link className='nextButton' onClick={handleAddressChange}>
+                    <button className="nextButton" onClick={handleSubmit}>
                         Next
-                    </Link>
+                    </button>
                 </div>
             </div>
         </div>

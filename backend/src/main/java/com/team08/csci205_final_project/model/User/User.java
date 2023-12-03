@@ -1,5 +1,9 @@
 package com.team08.csci205_final_project.model.User;
 
+import com.team08.csci205_final_project.model.Auth.Role;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,46 +23,31 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
-    /** Unique identifier for the user */
     @Id
+    @Schema(description = "Unique identifier for the user", example = "12345abcde")
     private String id;
 
-    /** First name of the user */
+    @Schema(description = "First name of the user", example = "John")
     private String firstName;
 
-    /** Last name of the user */
+    @Schema(description = "Last name of the user", example = "Doe")
     private String lastName;
 
-    /** Email address of the user */
+    @Schema(description = "Email address of the user", example = "john.doe@example.com")
     private String email;
 
-    /** Password of the user */
+    @Schema(description = "Password of the user", example = "SecureP@ssw0rd!")
     private String password;
 
-    /** Date of birth of the user */
+    @Schema(description = "Date of birth of the user", example = "1990-01-01")
     private LocalDate dateOfBirth;
 
-    /** Register date of the user */
+    @Schema(description = "Register date of the user", example = "2023-01-01")
     private LocalDate registerDate;
 
-    /** Geospatial location of the user */
+    @Schema(description = "Geospatial location of the user", example = "{\"type\": \"Point\", \"coordinates\": [-74.005974, 40.712776]}")
     private GeoJsonPoint location;
 
-    /** Role of the user in the system */
-    private int role;
-
-    /** National identification number of the user. */
-    private String nationalIdNumber;
-
-    /** Picture or image of the user's national ID. */
-    private String nationalIdPicture;
-
-    /** Driver's license number of the user. */
-    private String driverLicense;
-
-    /** Rating or score associated with the user based on reviews or feedback. */
-    private Double rating;
-
-    /** Current job ID if the user is associated with a job or task. */
-    private String currentJobId;
+    @Schema(description = "Role of the user in the system", example = "ROLE_USER")
+    private Role role;
 }

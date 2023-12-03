@@ -34,9 +34,12 @@ import java.util.ArrayList;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Provider {
+    /** Store Provider ID **/
     @Id
-    /** Store userID information of the provider */
     private String providerId;
+
+    /** Store userID information of the provider */
+    private String userId;
 
     /** Store email information of the provider */
     private String email;
@@ -48,5 +51,23 @@ public class Provider {
     private GeoJsonPoint currentLocation;
 
     /** Store the wait-for-response job */
-    private Job activeJob;
+    private String activeJob;
+
+    /** Store status of the provider */
+    private boolean providerAvail;
+
+    /** Vehicle details **/
+    private String vehicleDetails;
+
+    /** National identification number of the user. */
+    private String nationalIdNumber;
+
+    /** Picture or image of the user's national ID. */
+    private String nationalIdPicture;
+
+    /** Driver's license number of the user. */
+    private String driverLicense;
+
+    /** Rating or score associated with the user based on reviews or feedback. */
+    private Double rating;
 }

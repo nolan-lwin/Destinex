@@ -5,6 +5,7 @@
     flex-direction: column;
     align-items: center;
     margin-top: 2rem;
+    padding-bottom: 2rem;
 }
 
 .personalDetails,
@@ -86,26 +87,36 @@
     text-decoration: underline;
 }
 
-.linkBankAccButtonText {
-    width: 100%;
+
+/* Add more styles for other elements as needed */
+/* payment.css */
+
+.submitGranterButton {
+    display: flex;
+    flex-direction: row;
     max-width: 32rem;
+    gap: 5rem;
+    padding-top: 1.25rem;
+    padding-bottom: 3rem;
+}
+
+.submitGranterBtn {
+    width: 30%;
     background-color: #8B00FF;
     color: white;
     border: none;
+    padding: 1rem 0;
     border-radius: 2rem;
-    padding: 1rem;
     font-size: 1rem;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    margin-bottom: 4rem;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
-.linkBankAccButtonText:hover {
+.submitGranterBtn:hover {
     background-color: #7000CD;
-    text-decoration: none;
-    outline: none;
 }
-
-/* Add more styles for other elements as needed */

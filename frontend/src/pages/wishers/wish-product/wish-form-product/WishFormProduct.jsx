@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import './wish_form_product.css';
 import Slider from '@material-ui/core/Slider';
 
@@ -22,12 +22,49 @@ function WishFormProduct() {
         "Arts, Crafts & Sewing" : ["Crafting", "Art Supplies", "Sewing", "Scrapbook & Card Making Supplies", "Gift Wrapping Supplies"],
     };
 
+    const [productName, setProductName] = useState('');
+    const [date, setDate] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('');
     const [selectedSubcategory, setSelectedSubcategory] = useState('');
+    const [value, setValue] =  React.useState([50,200]);
+    const [isFormValid, setIsFormValid] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate();
+
+    const validateForm = () => {
+        if (!selectedCategory && !productName.trim() && !date) {
+            setErrorMessage('Please fill in all information!');
+            return false
+        }
+        return true;
+    };
+
+    const handleNextClick = () => {
+        const isValid = validateForm();
+        if (isValid) {
+            navigate('/wish-recipient');
+        }
+    };
+
+    const handleProductNameChange = (event) => {
+        const newName = event.target.value
+        setProductName(newName);
+        sessionStorage.setItem("productName", newName)
+    };
+
+    const handleDateChange = (event) => {
+        // console.log("wht", event.target.value)
+        // console.log("hehe", typeof event.target.value)
+        const newDate = event.target.value
+        setDate(newDate);
+        sessionStorage.setItem("date", newDate)
+        // console.log(sessionStorage.getItem("date"))
+    }
 
     const handleCategoryChange = (event) => {
-        setSelectedCategory(event.target.value);
-        sessionStorage.setItem("category", selectedCategory)
+        const newCategory = event.target.value
+        setSelectedCategory(newCategory);
+        sessionStorage.setItem("category", newCategory)
         setSelectedSubcategory(''); // Reset subcategory when category changes
     };
 
@@ -39,15 +76,12 @@ function WishFormProduct() {
     const minValue = 0;
     const maxValue = 500;
 
-    // Our States
-    const [value, setValue] =  React.useState([50,200]);
-
     // Changing State when volume increases/decreases
     const rangeSelector = (event, newValue) => {
         setValue(newValue);
         console.log(newValue)
         // Saving product price to session storage
-        sessionStorage.setItem("product_price", newValue)
+        sessionStorage.setItem("itemPrice", newValue)
     };
 
         return (
@@ -56,6 +90,7 @@ function WishFormProduct() {
             <div className="wishFormForProductTitle">
                 <span className="wishFormForProductTitleText">Make a </span>
                 <span className="wishFormForProductTitleWish">Wish</span>
+                <p>{errorMessage && <span>{errorMessage}</span>}</p>
             </div>
 
             <div className='wishFormForProductContainer'>
@@ -92,7 +127,9 @@ function WishFormProduct() {
                 <div className='productNameContainer'>
                     <div className='product'>
                         <label className='productText'>Product</label>
-                        <input className='productInput' type='text' placeholder='Enter the Product Name' />
+                        <input className='productInput' type='text' placeholder='Enter the Product Name'
+                            onChange={handleProductNameChange}
+                        />
                     </div>
                 </div>
 
@@ -117,7 +154,9 @@ function WishFormProduct() {
                 <div className='idealDateAndTimeContainer'>
                     <div className='idealDate'>
                         <label className='idealDateText'>Ideal Date</label>
-                        <input className='idealDateInput' type='date' placeholder='Enter the Ideal Date' />
+                        <input className='idealDateInput' type='date' placeholder='Enter the Ideal Date'
+                            onChange={handleDateChange}
+                        />
                     </div>
                     <div className='idealTime'>
                         <label className='idealTimeText'>Ideal Time</label>
@@ -126,9 +165,9 @@ function WishFormProduct() {
                 </div>
             </div>
 
-            <Link to='/wish-recipient' className='nextButton'>
+            <button className="nextButton" onClick={handleNextClick}>
                 Next
-            </Link>
+            </button>
         </div>
     )
 }

@@ -5,46 +5,46 @@
  *
  * Name: Hung Ngo
  * Section: YOUR SECTION
- * Date: 26/11/2023
- * Time: 12:31
+ * Date: 13/11/2023
+ * Time: 15:09
  *
  * Project: csci205_final_project
  * Package: com.team08.csci205_final_project.model.DTO
- * Class: JobStatus
+ * Class: JobResponse
  *
  * Description:
  *
  * ****************************************
  */
-package com.team08.csci205_final_project.model.DTO;
+package com.team08.csci205_final_project.model.DTO.Job;
 
 import com.team08.csci205_final_project.model.Job.JobStatus;
 
-public class JobTrackingStatus {
-    private String providerEmail;
-    private String message;
+public class JobResponse {
+    private String jobId;
+    private String providerId;
     private JobStatus status;
 
-    public JobTrackingStatus(String providerEmail, String message, JobStatus status) {
-        this.providerEmail = providerEmail;
-        this.message = message;
+    public JobResponse(String jobId, String providerId, JobStatus status) {
+        this.jobId = jobId;
+        this.providerId = providerId;
         this.status = status;
     }
 
-    public String getProviderEmail() {
-        return providerEmail;
+    public String getJobId() {
+        return jobId;
     }
 
-    public void setProviderEmail(String providerEmail) {
-        this.providerEmail = providerEmail;
+    public void setJobId(String jobId) {
+        this.jobId = jobId;
     }
 
-    public String getMessage() {
-        return message;
+    public String getProviderId() {
+        return providerId;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setProviderId(String providerId) {
+        this.providerId = providerId;
     }
 
     public JobStatus getStatus() {

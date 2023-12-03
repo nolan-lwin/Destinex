@@ -16,7 +16,7 @@
  *
  * ****************************************
  */
-package com.team08.csci205_final_project.model.DTO;
+package com.team08.csci205_final_project.model.DTO.Job;
 
 public class JobRequest {
     private String jobId;

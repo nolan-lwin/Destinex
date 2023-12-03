@@ -1,5 +1,6 @@
 package com.team08.csci205_final_project.controller;
 
+import com.team08.csci205_final_project.model.DTO.NewJobRequest;
 import com.team08.csci205_final_project.model.Job.Job;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.team08.csci205_final_project.model.Job.Job;
@@ -87,7 +88,7 @@ public class JobControllerTest {
         randomJob.setId("job1");
         String expectedResponseBody = objectMapper.writeValueAsString(randomJob);
 
-        given(jobService.createJob(any(Job.class))).willReturn(randomJob);
+        given(jobService.createJob(any(NewJobRequest.class))).willReturn(randomJob);
         given(jobService.findJobById("job1")).willReturn(Optional.of(randomJob));
 
         mockMvc.perform(post("/api/jobs")

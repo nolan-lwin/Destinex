@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 function CongratsPage(){
     return(
         <div className={"congratsBody"}>
-            <Header isGrant={true}/>
+            <Header isGrant={true} isLogin={true}/>
             <div className={"congratsContentBody"}>
                 <div className={"congratsPicContainer"}>
                     <img className={"congratsPic"} src={congratsPic} alt={"congratsPic"} />

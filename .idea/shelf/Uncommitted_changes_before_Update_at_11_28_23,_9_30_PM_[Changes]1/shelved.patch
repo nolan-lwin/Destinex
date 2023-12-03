@@ -1,0 +1,22 @@
+Index: frontend/src/context/ProtectedRoute.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\nimport { Navigate, Outlet } from 'react-router-dom';\nimport ErrorPage from \"../pages/common/error/ErrorPage\";\n\nconst ProtectedRoute = ({ isAuthenticated }) => {\n    return isAuthenticated ? <Outlet /> : <ErrorPage isLoggedIn={false}/>;\n};\n\nexport default ProtectedRoute;\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/frontend/src/context/ProtectedRoute.jsx b/frontend/src/context/ProtectedRoute.jsx
+--- a/frontend/src/context/ProtectedRoute.jsx	
++++ b/frontend/src/context/ProtectedRoute.jsx	
+@@ -1,9 +1,10 @@
+ import React from 'react';
+ import { Navigate, Outlet } from 'react-router-dom';
+ import ErrorPage from "../pages/common/error/ErrorPage";
++import Signin from "../pages/wishers/signin/Signin";
+ 
+ const ProtectedRoute = ({ isAuthenticated }) => {
+-    return isAuthenticated ? <Outlet /> : <ErrorPage isLoggedIn={false}/>;
++    return isAuthenticated ? <Outlet /> : <Signin></Signin>;
+ };
+ 
+ export default ProtectedRoute;

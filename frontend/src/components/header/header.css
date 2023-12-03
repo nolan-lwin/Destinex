@@ -254,8 +254,13 @@
     color: #000000;
 }
 
-
 .user-browse:hover .dropdown-menu {
+    display: block;
+    margin-right: 2rem;
+}
+
+
+.user-browse-no-bg:hover .dropdown-menu {
     display: block;
     margin-right: 2rem;
 }

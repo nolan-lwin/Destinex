@@ -18,14 +18,12 @@
  */
 package com.team08.csci205_final_project.controller;
 
-import com.team08.csci205_final_project.model.DTO.JobOffer;
-import com.team08.csci205_final_project.model.DTO.JobRequest;
-import com.team08.csci205_final_project.model.DTO.JobResponse;
-import com.team08.csci205_final_project.model.Job.Job;
+import com.team08.csci205_final_project.model.DTO.Job.JobOffer;
+import com.team08.csci205_final_project.model.DTO.Job.JobRequest;
+import com.team08.csci205_final_project.model.DTO.Job.JobResponse;
 import com.team08.csci205_final_project.service.JobDispatchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.slf4j.Logger;

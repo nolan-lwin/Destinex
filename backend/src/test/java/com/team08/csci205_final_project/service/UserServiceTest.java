@@ -1,6 +1,7 @@
 package com.team08.csci205_final_project.service;
 
-import com.team08.csci205_final_project.model.User;
+import com.team08.csci205_final_project.model.User.User;
+import com.team08.csci205_final_project.model.DTO.User.UserRegister;
 import com.team08.csci205_final_project.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,8 +9,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
@@ -38,13 +37,15 @@ class UserServiceTest {
 
     @Test
     public void testUserRegister() {
+        UserRegister userRegister = new UserRegister();
+        userRegister.setPassword("password");
+
         User user = new User();
-        user.setPassword("password");
 
         Mockito.when(passwordEncoder.encode(anyString())).thenReturn("encodedPassword");
         Mockito.when(userRepository.save(any(User.class))).thenReturn(user);
 
-        User result = userService.userRegister(user);
+        User result = userService.userRegister(new UserRegister());
 
         assertEquals("encodedPassword", result.getPassword());
         assertEquals(LocalDate.now(), result.getRegisterDate());

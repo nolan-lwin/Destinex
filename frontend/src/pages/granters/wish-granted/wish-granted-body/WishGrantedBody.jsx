@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import './WishGrantedBody.css';
+import {useNavigate} from "react-router-dom";
 
 function WishGrantedBody () {
 
+    const navigate = useNavigate();
+
     const handleSubmit = async (event) => {
         event.preventDefault();
-
-
+        navigate('/granter/home');
     }
 
     return (

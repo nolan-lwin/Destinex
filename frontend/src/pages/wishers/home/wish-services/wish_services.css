@@ -1,0 +1,96 @@
+/* wish_services.css */
+
+.wishServices {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3rem;
+    padding-bottom: 1.5rem;
+    background-color: #E9E9E9;
+}
+
+.wishServicesTitle {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 3rem;
+}
+
+.wishServicesTitleText {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #000000;
+}
+
+.wishServicesContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.wishServicesContainerItem1,
+.wishServicesContainerItem2 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+.wishServicesContainerItemImage {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    padding-bottom: 2rem;
+}
+
+.wishServicesContainerItem1 {
+    margin-left: 10rem;
+    margin-right: 2.5rem;
+}
+
+.wishServicesContainerItem2 {
+    margin-left: 2.5rem;
+    margin-right: 10rem;
+}
+
+.wishServicesContainerItemImage {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 2rem;
+}
+
+.wishServicesContainerItemTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000000;
+    padding-bottom: 1.5rem;
+}
+
+.wishServicesContainerItemText {
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: center;
+    color: #545454;
+    padding-bottom: 2rem;
+}
+
+.wishServicesContainerItemLink {
+    width: 100%;
+    max-width: 13rem;
+    background-color: #8B00FF;
+    color: white;
+    border: none;
+    padding: 1rem 0;
+    border-radius: 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 2.5rem;
+}
+
+.wishServicesContainerItemLink:hover {
+    background-color: #7000CD;
+}

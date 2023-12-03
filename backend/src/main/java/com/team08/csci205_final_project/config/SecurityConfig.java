@@ -18,15 +18,19 @@
  */
 package com.team08.csci205_final_project.config;
 
+import com.team08.csci205_final_project.security.CustomAccessDeniedHandler;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.cors.CorsConfiguration;
 
 import com.team08.csci205_final_project.security.JwtAuthenticationFilter;
@@ -40,23 +44,32 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableWebSecurity
 public class SecurityConfig {
 
+    @Autowired
+    @Qualifier("customAuthenticationEntryPoint")
+    AuthenticationEntryPoint authEntryPoint;
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((authz) -> authz
+//                        .requestMatchers("/**").permitAll()
                         .requestMatchers("/api/auth/login",
                                 "/api/users/register").permitAll()
-                        .requestMatchers("/api/users").hasAuthority("ROLE_ADMIN")
+                        .requestMatchers("/api/users/admin").hasAuthority("ROLE_ADMIN")
                         .requestMatchers("/api/transactions/delete/").hasAuthority("ROLE_ADMIN")
                         .requestMatchers("/api/transactions/add").hasAnyAuthority("ROLE_PROVIDER", "ROLE_ADMIN")
                         .requestMatchers("/ws/**").permitAll()
+                        .requestMatchers("/api/users/admin/**").hasAuthority("ROLE_ADMIN")
+                        .requestMatchers("/docs/**").permitAll()
                         .requestMatchers("/app/respondToJob").permitAll()
                         .anyRequest().authenticated()
+
                 )
                 .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
-                .addFilterBefore(corsFilter(), CorsFilter.class); // Add CORS filter before Spring Security filters
-        ;
+                .addFilterBefore(corsFilter(), CorsFilter.class)
+                .exceptionHandling((exception) -> exception.authenticationEntryPoint(authEntryPoint)
+                        .accessDeniedHandler(new CustomAccessDeniedHandler()));
         return http.build();
     }
 

@@ -8,6 +8,6 @@ import org.springframework.data.mongodb.repository.Query;
 import java.util.List;
 
 public interface JobRepository extends MongoRepository<Job, String> {
-    @Query("{'userId': ?0, 'jobStatus': ?1}")
+    @Query("{'userId': ?0, 'status': ?1}")
     public List<Job> findByUserId(String userId, JobStatus jobStatus);
 }

@@ -17,6 +17,7 @@ function Header(props) {
     const { logout } = useAuth();
     const [showDropdown, setShowDropdown] = useState(false);
     const userFullName = authUtils.getFullName();
+    const userRole = authUtils.getRole();
 
     const toggleDropdown = () => {
         setShowDropdown(!showDropdown);
@@ -38,13 +39,23 @@ function Header(props) {
                 {!isGrant &&
                     <div className="role-option-wish">
                         <Link to={"/wish-product"}><button className="btn-wish">Wish</button></Link>
-                        <Link to={"/granter/signup"}><button className="btn-grant">Grant</button></Link>
+                        {userRole === "ROLE_PROVIDER" &&
+                            <Link to={"/granter/home"}><button className="btn-grant">Grant</button></Link>
+                        }
+                        {userRole === "ROLE_USER" &&
+                            <Link to={"/granter/signup"}><button className="btn-grant">Grant</button></Link>
+                        }
                     </div>
                 }
                 {isGrant &&
                     <div className="role-option-grant">
                         <Link to={"/wish-product"}><button className="btn-wish">Wish</button></Link>
-                        <Link to={"/granter/signup"}><button className="btn-grant">Grant</button></Link>
+                        {userRole === "ROLE_PROVIDER" &&
+                            <Link to={"/granter/home"}><button className="btn-grant">Grant</button></Link>
+                        }
+                        {userRole === "ROLE_USER" &&
+                            <Link to={"/granter/signup"}><button className="btn-grant">Grant</button></Link>
+                        }
                     </div>
                 }
                 <div className="location">

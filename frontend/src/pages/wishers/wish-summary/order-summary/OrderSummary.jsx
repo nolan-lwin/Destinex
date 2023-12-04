@@ -18,7 +18,7 @@ function OrderSummary() {
             <div className="orderSummaryContainer">
 
                 <div className='orderSummarySubTitle'>
-                    <span className='orderSummarySubTitleText'>Order Summary:</span>
+                    <span className='orderSummarySubTitleText'>Wish Summary:</span>
                 </div>
 
                 <div className='itemsAndShippingCost'>

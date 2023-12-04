@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+# Team 08 CSCI205 Project: Destinex - The International Delivery Service
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Team Members and Roles
 
-## Available Scripts
+- **Professor:** Joshua Stough
+- **Product Owner:** Nolan Lwin
+- **Scrum Master:** Chang Min Bark
+- **Developers:** Hung Pham, Hung Ngo
 
-In the project directory, you can run:
+### Frontend Description
 
-### `npm start`
+Our frontend, crafted with React Native, provides a dynamic and intuitive user interface for our website. It's designed to offer a seamless and engaging user experience, allowing users to easily navigate and interact with our service. The frontend is continually updated to meet evolving user preferences and to incorporate the latest UI/UX trends.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Key Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### Responsive Design
+- **Adaptive Layouts**: The UI adapts gracefully to different screen sizes and orientations, ensuring a consistent experience across various devices.
+- **Intuitive Interactions**: User interactions are designed to be intuitive, with clear navigation and interactive elements that make the process of selecting and sending gifts effortless.
 
-### `npm test`
+#### Real-Time Updates
+- **WebSocket Integration**: Leveraging WebSocket for real-time updates, our frontend ensures that users receive immediate feedback and notifications, enhancing the interactivity of the application.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### User-Centric Functionality
+- **Easy Navigation**: The app layout is structured for easy navigation, making it straightforward for users to find what they need.
+- **Interactive Elements**: From selecting gifts to checking out, every element is designed with the user in mind, ensuring a smooth and enjoyable experience.
 
-### `npm run build`
+### Package Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The frontend is organized into several directories, each serving a specific function:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The frontend of our application is organized into specific directories, each tailored for a specific purpose to enhance maintainability and scalability:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `assets`: Houses static files used throughout the app.
+  - `img`: Contains image files.
+  - `svg`: Stores SVG files for high-quality vector graphics.
 
-### `npm run eject`
+- `components`: Reusable components that form the building blocks of the app's interface.
+  - `footer`: Components related to the footer section of the app.
+  - `header`: Various header components, allowing for different header styles and functionalities.
+    - `header-logo-only`: A minimal header with just the logo.
+    - `header-no-background`: A transparent header, adaptable to any background.
+    - `header-purple`: A header with a distinctive purple style.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- `context`: Manages the application state using React's Context API for state management across different components.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- `networks`: Handles network operations and data fetching.
+  - `api`: Contains functions and utilities for making API calls.
+  - `hooks`: Custom React hooks for network operations.
+  - `utils`: Utility functions supporting network operations.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- `pages`: Represents the different pages or screens of the application.
+  - `common`: Common components or layouts shared across different pages.
+    - `error`: Error page or error handling components.
+  - `granters`: Components and pages specific to the granter's side of the application.
+    - `bank`, `congrats`, `details`, `granter-home`, `jobs`, `setup`, `signup`, `waiting-payment`, `wish-granted`: Various subdirectories for different aspects and functionalities related to granters.
+  - `wishers`: Components and pages specific to the wisher's side of the application.
+    - `home`, `signin`, `signup`, `wish-additional`, `wish-confirmation`, `wish-product`, `wish-recipient`, `wish-success`, `wish-summary`, `wish-tracking`: Different subdirectories for various functionalities and features for wishers.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Third-Party Libraries
 
-## Learn More
+We use a range of third-party libraries to enhance the functionality and user experience of our React Native app:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. **React Navigation**: For managing navigation between different screens in the app.
+2. **Axios**: For making HTTP requests to the backend services.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Running the Frontend
 
-### Code Splitting
+To get the frontend up and running:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. **Navigate to the Frontend Directory**:
+   - Open a terminal and switch to the frontend directory:
+     ```
+     cd path/to/csci205_final_project/frontend
+     ```
+     Replace `path/to` with the actual path to your project.
 
-### Analyzing the Bundle Size
+2. **Install Dependencies**:
+   - Install all required dependencies via npm or yarn:
+     ```
+     npm i --force
+     ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+3. **Start the Application**:
+   - Launch the app on a simulator or a connected device:
+     ```
+     npm start
+     ```
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+4. **Verify the App is Running**:
+   - The application will automatically open in your browser or you can access to [the website](http://localhost:3000) manually.

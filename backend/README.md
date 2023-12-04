@@ -73,11 +73,11 @@ Follow these steps to set up the backend of our project on your local machine:
 2. **Build and run the project**:
     - Use gradle wrapper to build the code:
       ```
-      ./gradew build
+      ./gradlew build
       ```
     - Run it:
       ```
-      ./gradew run
+      ./gradlew run
       ```
 
 3. **Verify the Server is Running**:

@@ -53,7 +53,7 @@ We've utilized the following third-party libraries, which are not part of the st
 
 1. **Spring Boot (version 3.1.5)** - A powerful framework that simplifies the development, deployment, and operation of Spring applications. [Spring Boot Main Page](https://spring.io/projects/spring-boot)
 2. **MongoDB** - Our choice for the database, MongoDB is a NoSQL database that offers high performance, high availability, and easy scalability. [MongoDB Main Page](https://www.mongodb.com/)
-3. **Lombok** - Lombok is a Java library that helps to reduce boilerplate code. It automatically generates getters, setters, constructors, and other common code during the compile-time process. [Lombok Main Page](projectlombok.org)
+3. **Lombok** - Lombok is a Java library that helps to reduce boilerplate code. It automatically generates getters, setters, constructors, and other common code during the compile-time process. [Lombok Main Page](https://projectlombok.org)
 4. **jjwt-api (Version 0.11.5)** - We use `jjwt-api` for handling JSON Web Tokens (JWTs), crucial for secure authentication and communication in our application. [jjwt-api GitHub](https://github.com/jwtk/jjwt)
 5. **Springdoc (Version 2.1.0)** - This library makes it easy to create and maintain accurate API documentation, which is essential for both internal development and external API consumers. [Springdoc GitHub](https://github.com/springdoc/springdoc-openapi)
 

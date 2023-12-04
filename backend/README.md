@@ -81,4 +81,4 @@ Follow these steps to set up the backend of our project on your local machine:
       ```
 
 3. **Verify the Server is Running**:
-    - Check the terminal output to confirm the server is running. You can access the [API Documentation](localhost:8080/docs/api/ui) for front-end developers and also use tools like Postman to test the API endpoints.
+    - Check the terminal output to confirm the server is running. You can access the [API Documentation](http://localhost:8080/docs/api/ui) for front-end developers and also use tools like Postman to test the API endpoints.

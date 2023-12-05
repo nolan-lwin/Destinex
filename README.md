@@ -1,4 +1,4 @@
-# Team 08 CSCI205 Project: Destinex - The International Delivery Service
+# Team 08 CSCI205 Project: Destinex - The P2P Global Delivery Platform
 
 ## Team Members and Roles
 
@@ -9,9 +9,9 @@
 
 ## Project Overview
 
-This project, developed by Team 08 CSCI205, aims to provide a solution to the way gifts are delivered to their loved one internationally. Our application provides a seamless and user-friendly platform for customers who wish to send gifts to their family and friends residing in different countries. With a focus on reliability and emotional connection, our service ensures that your precious gifts reach their destination safely and on time, bringing joy to your loved ones, no matter where they are.
+This project, developed by Team 08 of the CSCI205 class, aims to provide a solution to the way gifts are delivered to their loved ones internationally. Our application provides a seamless and user-friendly platform for customers who wish to send gifts to their family and friends residing in different countries. With a focus on reliability and emotional connection, our service ensures that your precious gifts reach their destination safely and on time, bringing joy to your loved ones, no matter where they are.
 
-Our project is a website consists of frontend and backend application. Our frontend interface is developed with React Native, offers an intuitive and responsive interface that simplifies human experiences. At the core of the project, we use Spring Boot that performs all the server operations and interacting with the database.
+Our project is a website platform consists of front-end and back-end applications. Our front-end interface is developed with React Native, offers an intuitive and responsive interface that simplifies human experiences. At the core of the project, we use Spring Boot that performs all the server operations and interacting with the database.
 
 Aim at briding the gap between people living in different countries, our project is continually evolving, adding more diverse features and enhancing user experience. Our service does more than deliver gifts; it's about sending customers affection and care across the globe.
 

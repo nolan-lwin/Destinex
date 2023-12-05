@@ -1,4 +1,4 @@
-# Team 08 CSCI205 Project: Destinex - The International Delivery Service
+# Team 08 CSCI205 Project: Destinex - The P2P Global Delivery Platform
 
 ## Team Members and Roles
 
@@ -7,9 +7,13 @@
 - **Scrum Master:** Chang Min Bark
 - **Developers:** Hung Pham, Hung Ngo
 
-### Frontend Description
+### High-fidelity Prototype
 
-Our frontend, crafted with React Native, provides a dynamic and intuitive user interface for our website. It's designed to offer a seamless and engaging user experience, allowing users to easily navigate and interact with our service. The frontend is continually updated to meet evolving user preferences and to incorporate the latest UI/UX trends.
+Our entire front-end website is meticulously crafted on [Figma](https://www.figma.com/), starting with a high-fidelity interactive and wire-framed prototype. You can explore the detailed design and functionality by clicking on this [link](https://www.figma.com/proto/l6GGqXkRlP2Vc38Z6dYV2I/Destinex?page-id=0%3A1&type=design&node-id=1-2&viewport=1660%2C127%2C0.27&t=4RNBm18FlhMa4Fih-1&scaling=scale-down&mode=design).
+
+### Front-end Description
+
+Our front-end, crafted with React Native, provides a dynamic and intuitive user interface for our website platform. It's designed to offer a seamless and engaging user experience, allowing users to easily navigate and interact with our service. The front-end is continually updated to meet evolving user preferences and to incorporate the latest UI/UX trends.
 
 ### Key Features
 
@@ -18,7 +22,7 @@ Our frontend, crafted with React Native, provides a dynamic and intuitive user i
 - **Intuitive Interactions**: User interactions are designed to be intuitive, with clear navigation and interactive elements that make the process of selecting and sending gifts effortless.
 
 #### Real-Time Updates
-- **WebSocket Integration**: Leveraging WebSocket for real-time updates, our frontend ensures that users receive immediate feedback and notifications, enhancing the interactivity of the application.
+- **WebSocket Integration**: Leveraging WebSocket for real-time updates, our front-end ensures that users receive immediate feedback and notifications, enhancing the interactivity of the application.
 
 #### User-Centric Functionality
 - **Easy Navigation**: The app layout is structured for easy navigation, making it straightforward for users to find what they need.
@@ -26,9 +30,9 @@ Our frontend, crafted with React Native, provides a dynamic and intuitive user i
 
 ### Package Structure
 
-The frontend is organized into several directories, each serving a specific function:
+The front-end is organized into several directories, each serving a specific function:
 
-The frontend of our application is organized into specific directories, each tailored for a specific purpose to enhance maintainability and scalability:
+The front-end of our application is organized into specific directories, each tailored for a specific purpose to enhance maintainability and scalability:
 
 - `assets`: Houses static files used throughout the app.
   - `img`: Contains image files.
@@ -63,12 +67,12 @@ We use a range of third-party libraries to enhance the functionality and user ex
 1. **React Navigation**: For managing navigation between different screens in the app.
 2. **Axios**: For making HTTP requests to the backend services.
 
-### Running the Frontend
+### Running the Front-end
 
-To get the frontend up and running:
+To get the front-end up and running:
 
-1. **Navigate to the Frontend Directory**:
-   - Open a terminal and switch to the frontend directory:
+1. **Navigate to the Front-end Directory**:
+   - Open a terminal and switch to the front-end directory:
      ```
      cd path/to/csci205_final_project/frontend
      ```
@@ -87,4 +91,4 @@ To get the frontend up and running:
      ```
 
 4. **Verify the App is Running**:
-   - The application will automatically open in your browser or you can access to [the website](http://localhost:3000) manually.
+   - The application will automatically open in your browser or you can type `http://localhost:3000` manually in your website browser.

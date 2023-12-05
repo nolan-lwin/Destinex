@@ -1,4 +1,4 @@
-# Team 08 CSCI205 Project: Destinex - The International Delivery Service
+# Team 08 CSCI205 Project: Destinex - The P2P Global Delivery Platform
 
 ## Team Members and Roles
 
@@ -7,9 +7,9 @@
 - **Scrum Master:** Chang Min Bark
 - **Developers:** Hung Pham, Hung Ngo
 
-### Backend Description
+### Back-end Description
 
-This backend, built with Spring Boot and MongoDB, handles all our application's data processing, API management, and integration with the frontend. We constantly evolve our backend architecture and functionalities to align with customer needs and demands in our commitment to provide the best user experience.
+This back-end, built with Spring Boot and MongoDB, handles all our application's data processing, API management, and integration with the front-end. We constantly evolve our back-end architecture and functionalities to align with customer needs and demands in our commitment to provide the best user experience.
 
 ### Key Features
 
@@ -60,11 +60,11 @@ We've utilized the following third-party libraries, which are not part of the st
 
 ### How to run it
 
-Follow these steps to set up the backend of our project on your local machine:
+Follow these steps to set up the back-end of our project on your local machine:
 
-1. **Navigate to the Backend Directory**:
+1. **Navigate to the back-end directory**:
     - Open a terminal or command prompt.
-    - Change to the backend directory of the project:
+    - Change to the back-end directory of the project:
       ```
       cd path/to/csci205_final_project/backend
       ```
@@ -80,5 +80,5 @@ Follow these steps to set up the backend of our project on your local machine:
       ./gradlew run
       ```
 
-3. **Verify the Server is Running**:
+3. **Verify the server is running**:
     - Check the terminal output to confirm the server is running. You can access the [API Documentation](http://localhost:8080/docs/api/ui) for front-end developers and also use tools like Postman to test the API endpoints.

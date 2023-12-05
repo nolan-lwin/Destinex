@@ -57,7 +57,7 @@ function App() {
               <Route path="/wish-recipient" element={<WishRecipient/>}/>
               <Route path="/wish-additional" element={<WishAdditional/>}/>
               <Route path="/wish-summary" element={<WishSummary/>}/>
-              <Route path="/wish-confirmation" element={<WishConfirmation/>}/>
+              <Route path="/wish-status" element={<WishConfirmation/>}/>
               <Route path="/wish-success" element={<WishSuccess/>}/>
               <Route path="/granter/home" element={<GranterHome/>}/>
               <Route path="/granter/jobs" element={<JobList/>} />

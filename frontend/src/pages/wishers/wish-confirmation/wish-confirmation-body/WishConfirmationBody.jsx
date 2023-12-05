@@ -52,7 +52,7 @@ function WishConfirmationBody () {
                         <span className={'wishConfirmBoxTitle'}>Status</span>
                     </div>
                     <div className={'wishConfirmBox'}>
-                        <span className={'wishConfirmBoxDesc'}>You wish status: {wishInfo?.status}</span>
+                        <span className={'wishConfirmBoxDesc'}>Your wish status: {wishInfo?.status}</span>
                     </div>
                 </div>
                 <div className={'wishConfirmBoxContainer'}>
@@ -60,7 +60,7 @@ function WishConfirmationBody () {
                         <span className={'wishConfirmBoxTitle'}>Item price</span>
                     </div>
                     <div className={'wishConfirmBox'}>
-                        <span className={'wishConfirmBoxDesc'}>{wishInfo?.itemPrice}</span>
+                        <span className={'wishConfirmBoxDesc'}>${wishInfo?.itemPrice}</span>
                     </div>
                 </div>
                 <div className={'wishConfirmBoxContainer'}>
@@ -76,7 +76,7 @@ function WishConfirmationBody () {
                         <span className={'wishConfirmBoxTitle'}>Granter Name</span>
                     </div>
                     <div className={'wishConfirmBox'}>
-                        <span className={'wishConfirmBoxDesc'}>{wishInfo?.providerId || 'Hold on... We are finding a provider for you!'}</span>
+                        <span className={'wishConfirmBoxDesc'}>{wishInfo?.providerId || 'Still searching for Granter...'}</span>
                     </div>
                 </div>
 

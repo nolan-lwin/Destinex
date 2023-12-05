@@ -119,3 +119,16 @@
     cursor: pointer;
     background-color: #7000CD;
 }
+
+.missingItemLink {
+    color: #8B00FF;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.missingItemLink:hover {
+    color: #7000CD;
+    cursor: pointer;
+    text-decoration: underline;
+}

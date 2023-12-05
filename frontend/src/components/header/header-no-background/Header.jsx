@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import IconBellBlack from '../../../assets/svg/icon-bell-black.svg';
 import DemoUser from '../../../assets/img/demo-user.png';
@@ -19,6 +20,7 @@ function Header(props) {
     const [showDropdown, setShowDropdown] = useState(false);
     const { isGrant } = props;
     const userRole = authUtils.getRole();
+    const navigate = useNavigate();
 
     const toggleDropdown = () => {
         setShowDropdown(!showDropdown);
@@ -27,6 +29,10 @@ function Header(props) {
     const handleLogout = () => {
         logout();
     }
+
+    const handleButtonClick = () => {
+        navigate('/wish-status');
+    };
 
     return (
         <div className="header-no-bg">
@@ -81,6 +87,7 @@ function Header(props) {
                         {showDropdown && (
                             <div className="dropdown-menu">
                                 <button onClick={handleLogout}>Log out</button>
+                                <button onClick={handleButtonClick}>Wish Status</button>
                             </div>
                         )}
                     </div>

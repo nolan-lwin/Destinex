@@ -35,3 +35,4 @@ We've utilized the following third-party libraries, which are not part of the st
 
 ## Video Presentation
 
+Link to our video presentation: https://mediaspace.bucknell.edu/media/CSCI%20205%20Final%20Presentation%20-%20Team%2008/1_6kke4wfa
